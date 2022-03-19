@@ -1,3 +1,4 @@
+import PetList from "./src/components/PetList";
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet,View } from 'react-native';
 import { useFonts, Montserrat_900Black } from '@expo-google-fonts/montserrat';
@@ -16,7 +17,7 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-
+  
   let [fontsLoaded] = useFonts({
     Montserrat_900Black,
   });
@@ -83,9 +84,9 @@ const TabNavigator = () => {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-  },
+	container: {
+		flex: 1,
+		backgroundColor: "#fff",
+		alignItems: "center",
+	},
 });
