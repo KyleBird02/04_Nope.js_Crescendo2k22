@@ -5,7 +5,7 @@ import { auth } from '../../firebase';
 
 
 
-export default function Login() {
+export default function SignUp() {
 
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
@@ -21,7 +21,17 @@ export default function Login() {
       const user = userCredentials.user;
       console.log(user.email,user);
     })
-    .catch(error => alert(error));
+    .catch(error => {
+    if(error.code === "auth/email-already-in-use")
+    {
+        handleLogin();
+    }
+    else
+    {
+    alert(error.message)
+    console.log(error)
+    }
+    });
   }
 
   const handleLogin = () => {
@@ -49,16 +59,16 @@ export default function Login() {
           placeholder="Password"
           onChangeText={newText => setPassword(newText)}
       />
-      <Pressable onPress={handleLogin}>
-      <Text style={{ backgroundColor : "#3394EB", padding : "10px", paddingHorizontal:"105px", fontFamily: 'Montserrat', fontWeight:"500",borderRadius:"16.7px", fontSize : "15px"}}>Login</Text>
+      <Pressable onPress={handleSignUp}>
+      <Text style={{ backgroundColor : "#3394EB", padding : "10px", paddingHorizontal:"105px", fontFamily: 'Montserrat', fontWeight:"500",borderRadius:"16.7px", fontSize : "15px"}}>Sign Up</Text>
       </Pressable>
       <Pressable>
       <Text
       style={{fontFamily: 'Montserrat', fontWeight:"300",paddingTop:"10px"}}
-      >Don't have an account ? 
+      >Already have an account ? 
       <Text
       style={{color:"#03063A", fontWeight:"500"}}
-      > Sign Up</Text>
+      > Login</Text>
       </Text>
       </Pressable>
     </View>
