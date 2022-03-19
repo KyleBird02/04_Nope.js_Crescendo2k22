@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, Pressable,Image, TextInput } from 'react-native';
 import { useFonts, Montserrat_900Black } from '@expo-google-fonts/montserrat';
 import { auth } from '../../firebase';
-import { NavigationContainer } from '@react-navigation/native';
 
 
 
-export default function Login({ navigation }) {
+export default function SignUp({ navigation }) {
 
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
@@ -22,7 +21,17 @@ export default function Login({ navigation }) {
       const user = userCredentials.user;
       console.log(user.email,user);
     })
-    .catch(error => alert(error));
+    .catch(error => {
+    if(error.code === "auth/email-already-in-use")
+    {
+        handleLogin();
+    }
+    else
+    {
+    alert(error.message)
+    console.log(error)
+    }
+    });
   }
 
   const handleLogin = () => {
@@ -50,17 +59,17 @@ export default function Login({ navigation }) {
           placeholder="Password"
           onChangeText={newText => setPassword(newText)}
       />
-      <Pressable onPress={handleLogin}>
-      <Text style={{ backgroundColor : "#3394EB", padding : "10px", paddingHorizontal:"105px", fontFamily: 'Montserrat', fontWeight:"500",borderRadius:"16.7px", fontSize : "15px"}}>Login</Text>
+      <Pressable onPress={handleSignUp}>
+      <Text style={{ backgroundColor : "#3394EB", padding : "10px", paddingHorizontal:"105px", fontFamily: 'Montserrat', fontWeight:"500",borderRadius:"16.7px", fontSize : "15px"}}>Sign Up</Text>
       </Pressable>
       <Pressable
-      onPress={() => navigation.navigate('SignUp')}>
+      onPress={() => navigation.navigate('Login')}>
       <Text
-      style={{fontFamily: 'Montserrat', fontWeight:"300",padding:"10px",width:"66vw"}}
-      >Don't have an account ? 
+      style={{fontFamily: 'Montserrat', fontWeight:"300",paddingTop:"10px"}}
+      >Already have an account ? 
       <Text
       style={{color:"#03063A", fontWeight:"500"}}
-      > Sign Up</Text>
+      > Login</Text>
       </Text>
       </Pressable>
     </View>
