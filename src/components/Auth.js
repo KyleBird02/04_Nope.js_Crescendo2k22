@@ -12,7 +12,11 @@ export const AuthProvider = ({ children }) => {
         setCurrentUser(user)
         setPending(false)
       });
+      return () => {
+       // cleanup
+      }
     }, []);
+    
   
     if(pending){
       return <>Loading...</>

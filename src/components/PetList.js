@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useEffect, useState} from "react";
 import {
 	SafeAreaView,
 	View,
@@ -6,29 +6,47 @@ import {
 	StyleSheet,
 	Text,
 	StatusBar,
+	Image,
 } from "react-native";
 import CatBanner from "./CatBanner";
 import Rupaw from "./Rupaw";
-
-const DATA = [
-	{
-		id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-		title: "First Item",
-	},
-	{
-		id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-		title: "Second Item",
-	},
-];
+import {strayRef } from "../../firebase";
+import { Montserrat_400Regular } from "@expo-google-fonts/montserrat";
 
 const Item = ({ title }) => (
 	<View style={styles.item}>
-		<Text style={styles.title}>{title}</Text>
+		<Text style={styles.title}>{title.name}</Text>
+		<Image source={{uri : title.image}} style={{width:"40vw",height:"40vw",opacity:0.85}}/>
 	</View>
 );
 
 const PetList = () => {
-	const renderItem = ({ item }) => <Item title={item.title} />;
+	const [refresh,setRefresh] = useState(true);
+
+	const renderItem = ({ item }) => <Item title={item} />;
+
+	const [mainList,setMain] = useState([]);
+	let items = [];
+	const renderStrays = () =>{
+		strayRef.get().then((querySnapshot) => {
+		  querySnapshot.forEach((doc) => {
+			  // doc.data() is never undefined for query doc snapshots
+			  console.log(doc.data());
+			  items.push({id:doc.id ,...doc.data()})
+			  setMain(items);
+			  console.log(items);
+		  });
+		  setRefresh(!refresh);
+	  });
+	}
+
+	useEffect(() => {
+		renderStrays()
+	
+	  return () => {
+		//
+	  }
+	}, [])
 
 	return (
 		<SafeAreaView style={styles.container}>
@@ -47,11 +65,15 @@ const PetList = () => {
 				}}>
 				Adopt Pet
 			</Text>
+			<View style={styles.flex}>
 			<FlatList
-				data={DATA}
+				data={mainList}
 				renderItem={renderItem}
 				keyExtractor={(item) => item.id}
+				extraData = {refresh}
+				numColumns = {2}
 			/>
+			</View>
 		</SafeAreaView>
 	);
 };
@@ -62,14 +84,20 @@ const styles = StyleSheet.create({
 		marginTop: StatusBar.currentHeight || 0,
 	},
 	item: {
-		backgroundColor: "#f9c2ff",
-		padding: 20,
-		marginVertical: 8,
-		marginHorizontal: 16,
+		backgroundColor: "#C2EBFF",
+		marginHorizontal:"10px",
+		borderRadius : "10px",
 	},
 	title: {
-		fontSize: 32,
+		fontSize: 18,
+		padding:"5px", 
+		fontFamily : Montserrat_400Regular,
+		fontWeight: "700",
 	},
+	flex:{
+		display:"flex",
+		alignItems:"center",
+	}
 });
 
 export default PetList;

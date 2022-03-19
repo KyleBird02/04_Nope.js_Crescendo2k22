@@ -8,7 +8,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Login from './src/components/Login';
 import SignUp from './src/components/SignUp';
 import { AuthProvider } from './src/components/Auth';
-import { auth } from './firebase';
+import { auth} from './firebase';
 import GetStrayData from './src/components/GetStrayData';
 import { useState, useEffect } from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -60,13 +60,15 @@ const TabNavigator = () => {
   return (
       <Tab.Navigator
         screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
+          tabBarIcon: ({color, size }) => {
             let iconName;
 
             if (route.name === 'Home') {
               iconName = 'home-outline';
             } else if (route.name === 'Donate') {
               iconName = 'cash-outline';
+            } else if (route.name === 'Register') {
+              iconName = 'umbrella-outline';
             }
 
             // You can return any component that you like here!
@@ -77,7 +79,8 @@ const TabNavigator = () => {
           headerShown: false,
         })}
       >
-        <Tab.Screen name="Home" component={GetStrayData} />
+        <Tab.Screen name="Home" component={PetList} />
+        <Tab.Screen name="Register" component={GetStrayData} />
         <Tab.Screen name="Donate" component={GetStrayData} />
       </Tab.Navigator>
   )
