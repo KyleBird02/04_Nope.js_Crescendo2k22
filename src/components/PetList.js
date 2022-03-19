@@ -7,6 +7,8 @@ import {
 	Text,
 	StatusBar,
 } from "react-native";
+import CatBanner from "./CatBanner";
+import Rupaw from "./Rupaw";
 
 const DATA = [
 	{
@@ -31,8 +33,20 @@ const PetList = () => {
 	return (
 		<SafeAreaView style={styles.container}>
 			<div>
-				<h1>hello</h1>
+				<Rupaw />
 			</div>
+			<div>
+				<CatBanner />
+			</div>
+			<Text
+				style={{
+					fontFamily: "Montserrat_900Black",
+					fontSize: 40,
+					color: "#03063A",
+					margin: "16px",
+				}}>
+				Adopt Pet
+			</Text>
 			<FlatList
 				data={DATA}
 				renderItem={renderItem}

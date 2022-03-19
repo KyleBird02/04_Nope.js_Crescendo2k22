@@ -21,9 +21,9 @@ export default function App() {
 				screenOptions={{
 					headerShown: false,
 				}}>
+				<Stack.Screen name="PetList" component={PetList} />
 				<Stack.Screen name="Login" component={Login} />
 				<Stack.Screen name="SignUp" component={SignUp} />
-				<Stack.Screen name="PetList" component={PetList} />
 			</Stack.Navigator>
 			<StatusBar style="auto" />
 		</NavigationContainer>
