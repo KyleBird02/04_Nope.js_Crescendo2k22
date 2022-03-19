@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { useFonts, Montserrat_900Black } from "@expo-google-fonts/montserrat";
 import { auth } from "../../firebase";
+import CatBanner from "./CatBanner";
 
 export default function SignUp({ navigation }) {
 	const [email, setEmail] = useState("");
