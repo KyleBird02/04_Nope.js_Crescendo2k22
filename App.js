@@ -1,7 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet,View } from 'react-native';
 import { useFonts, Montserrat_900Black } from '@expo-google-fonts/montserrat';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from './src/components/Login';
+import SignUp from './src/components/SignUp';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
 
@@ -10,10 +15,20 @@ export default function App() {
   });
   
   return (
-    <View style={styles.container}>
-      <Login/>
-      <StatusBar style="auto" />
-    </View>
+      <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login"
+      screenOptions={{
+      headerShown: false
+    	}}>
+        <Stack.Screen name="Login" 
+        component={Login} 
+        />
+        <Stack.Screen name="SignUp" 
+        component={SignUp} 
+        />
+      </Stack.Navigator>
+    <StatusBar style="auto" />
+    </NavigationContainer>
   );
 }
 

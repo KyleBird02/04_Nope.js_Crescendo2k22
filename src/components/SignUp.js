@@ -5,7 +5,7 @@ import { auth } from '../../firebase';
 
 
 
-export default function SignUp() {
+export default function SignUp({ navigation }) {
 
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
@@ -62,7 +62,8 @@ export default function SignUp() {
       <Pressable onPress={handleSignUp}>
       <Text style={{ backgroundColor : "#3394EB", padding : "10px", paddingHorizontal:"105px", fontFamily: 'Montserrat', fontWeight:"500",borderRadius:"16.7px", fontSize : "15px"}}>Sign Up</Text>
       </Pressable>
-      <Pressable>
+      <Pressable
+      onPress={() => navigation.navigate('Login')}>
       <Text
       style={{fontFamily: 'Montserrat', fontWeight:"300",paddingTop:"10px"}}
       >Already have an account ? 
