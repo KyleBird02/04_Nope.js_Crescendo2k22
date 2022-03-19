@@ -25,6 +25,25 @@ else
 }
 
 const auth = firebase.auth();
+const firestore = firebase.firestore();
+const createUserDocument = async (user,additionalData) => {
+  if(!user) return;
+
+  const userRef = firestore.doc(`users/${user.uid}`);
+  const snapshot = await userRef.get();
+
+  if(!snapshot.exists){
+    try{
+      userRef.set(additionalData);
+    }
+    catch(error){
+      console.log(error);
+    }
+  }
+}
 
 export {auth};
+export {firestore};
+export {createUserDocument};
+export {app};
 //const app = initializeApp(firebaseConfig);
