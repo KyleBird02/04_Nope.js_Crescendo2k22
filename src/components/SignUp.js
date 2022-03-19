@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Pressable,Image, TextInput } from 'react-native';
 import { useFonts, Montserrat_900Black } from '@expo-google-fonts/montserrat';
-import { auth } from '../../firebase';
-import CatBanner from "./CatBanner";
+import { auth, createUserDocument } from '../../firebase';
 
 
 
@@ -21,6 +20,7 @@ export default function SignUp({ navigation }) {
     .then(userCredentials => {
       const user = userCredentials.user;
       console.log(user.email,user);
+      createUserDocument(user,{uid : user.uid,name : "Afif",rp : 100});
     })
     .catch(error => {
     if(error.code === "auth/email-already-in-use")
