@@ -5,14 +5,11 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Login from "./src/components/Login";
 import SignUp from "./src/components/SignUp";
+import PetList from "./src/components/PetList";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-	let [fontsLoaded] = useFonts({
-		Montserrat_900Black,
-	});
-
 	let [fontsLoaded] = useFonts({
 		Montserrat_900Black,
 	});
@@ -26,6 +23,7 @@ export default function App() {
 				}}>
 				<Stack.Screen name="Login" component={Login} />
 				<Stack.Screen name="SignUp" component={SignUp} />
+				<Stack.Screen name="PetList" component={PetList} />
 			</Stack.Navigator>
 			<StatusBar style="auto" />
 		</NavigationContainer>
