@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, Pressable,Image, TextInput } from 'react-native';
 import { useFonts, Montserrat_900Black } from '@expo-google-fonts/montserrat';
 import { auth } from '../../firebase';
+import CatBanner from "./CatBanner";
 
 
 
