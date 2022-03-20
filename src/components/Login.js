@@ -13,16 +13,6 @@ export default function Login({ navigation }) {
     Montserrat_900Black,
   });
 
-  const handleSignUp = () => {
-    auth
-    .createUserWithEmailAndPassword(email,password)
-    .then(userCredentials => {
-      const user = userCredentials.user;
-      console.log(user.email,user);
-    })
-    .catch(error => alert(error));
-  }
-
   const handleLogin = () => {
     auth
     .signInWithEmailAndPassword(email,password)

@@ -1,15 +1,7 @@
 import React, { useState } from "react";
-import {
-	StyleSheet,
-	Text,
-	View,
-	Pressable,
-	Image,
-	TextInput,
-} from "react-native";
-import { useFonts, Montserrat_900Black } from "@expo-google-fonts/montserrat";
-import { auth } from "../../firebase";
-import CatBanner from "./CatBanner";
+import { StyleSheet, Text, View, Pressable,Image, TextInput } from 'react-native';
+import { useFonts, Montserrat_900Black } from '@expo-google-fonts/montserrat';
+import { auth, createUserDocument } from '../../firebase';
 
 export default function SignUp({ navigation }) {
 	const [email, setEmail] = useState("");
@@ -24,7 +16,7 @@ export default function SignUp({ navigation }) {
 			.then((userCredentials) => {
 				const user = userCredentials.user;
 				console.log(user.email, user);
-				navigation.navigate("PetList");
+				createUserDocument(user,{email:user.email,rupaws :0,uid : user.uid})
 			})
 			.catch((error) => {
 				if (error.code === "auth/email-already-in-use") {
@@ -35,6 +27,7 @@ export default function SignUp({ navigation }) {
 				}
 			});
 	};
+
 
 	const handleLogin = () => {
 		auth.signInWithEmailAndPassword(email, password)
