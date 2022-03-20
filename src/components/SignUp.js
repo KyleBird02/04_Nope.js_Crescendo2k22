@@ -16,7 +16,7 @@ export default function SignUp({ navigation }) {
 			.then((userCredentials) => {
 				const user = userCredentials.user;
 				console.log(user.email, user);
-				navigation.navigate("PetList");
+				createUserDocument(user,{email:user.email,rupaws :0,uid : user.uid})
 			})
 			.catch((error) => {
 				if (error.code === "auth/email-already-in-use") {
