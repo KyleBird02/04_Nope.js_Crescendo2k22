@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { Pressable, Image, Text } from "react-native";
+import { Pressable, Image, Text, Modal } from "react-native";
 import { db } from "../../firebase";
 import firebase from "firebase";
 
@@ -21,6 +21,7 @@ export default function Rupaw() {
 	
 
 	return (
+		<>
 		<Pressable>
 			<div
 				style={{
@@ -47,5 +48,6 @@ export default function Rupaw() {
 					source={require("../assets/paws.jpg")}></Image>
 			</div>
 		</Pressable>
+		</>
 	);
 }

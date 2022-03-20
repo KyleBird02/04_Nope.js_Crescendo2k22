@@ -17,7 +17,7 @@ const PetList = () => {
   return (
     <SafeAreaView style={styles.container}>
       <div>
-        <span style={{display: "flex"}}>
+        <span style={{display: "flex", flexDirection:"row-reverse"}}>
           {/* <Image
             style={{ width: "80px", height: "80px"}}
             source={require("../assets/back.png")}

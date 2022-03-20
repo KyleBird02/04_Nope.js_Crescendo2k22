@@ -1,13 +1,14 @@
-import React from 'react'
-import {StyleSheet, Text, View, Pressable,Image, TextInput} from "react-native";
+import React, {useState} from 'react'
+import {StyleSheet, Text, View, Pressable,Image, TextInput, Modal} from "react-native";
 import firebase from 'firebase';
 import { Montserrat_500Medium, Montserrat_900Black } from '@expo-google-fonts/montserrat';
 import Rupaw from './Rupaw';
+import Redeem from "./Redeem";
 
 
 export default function UserScreen() {
-
     const user = firebase.auth().currentUser;
+    const [vis,setVis] = useState(false);
 
   return (
     <View style={styles.container}>
@@ -20,6 +21,16 @@ export default function UserScreen() {
         // An error happened.
         });}}>
         <Text style={{ backgroundColor : "#3394EB", padding : "10px", paddingHorizontal:"105px", fontFamily: Montserrat_500Medium, fontWeight:"500",borderRadius:"16.7px", fontSize : "15px", marginVertical:"20px"}}>Log out</Text>
+    </Pressable>
+    <Modal
+    animationType='slide'
+    visible={vis}>
+    <Pressable onPress={()=>setVis(!vis)}>
+    <Redeem/>
+    </Pressable>
+    </Modal>
+    <Pressable onPress={()=>setVis(!vis)}>
+        <Text style={{ backgroundColor : "#3394EB", padding : "10px", paddingHorizontal:"105px", fontFamily: Montserrat_500Medium, fontWeight:"500",borderRadius:"16.7px", fontSize : "15px", marginVertical:"20px"}}>Redeem Rupaws</Text>
     </Pressable>
     </View>
   )
