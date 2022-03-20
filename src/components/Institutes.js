@@ -7,11 +7,15 @@ import {
 	Text,
 	StatusBar,
 	Image,
+	Linking,
+	Pressable,
 } from "react-native";
 import CatBanner from "./CatBanner";
 import Rupaw from "./Rupaw";
 import { strayRef } from "../../firebase";
 import { Montserrat_400Regular } from "@expo-google-fonts/montserrat";
+import { Button } from "react-native-web";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 const Item = ({ title }) => (
 	<View style={styles.item}>
@@ -20,8 +24,37 @@ const Item = ({ title }) => (
 			source={{ uri: title.image }}
 			style={{ width: "40vw", height: "40vw", opacity: 0.85 }}
 		/> */}
-		<Text style={{ width: "80vw", height: "40vw", opacity: 0.85 }}>
-			Location
+		<Text
+			style={{
+				width: "80vw",
+				height: "40vw",
+				opacity: 0.85,
+			}}>
+			<Pressable
+				onPress={() =>
+					Linking.openURL("https://goo.gl/maps/RX6zfpLhEAUKN2cNA")
+				}>
+				<Ionicons
+					name={"location-outline"}
+					style={styles.compassIcon}
+					onPress={() =>
+						Linking.openURL("https://goo.gl/maps/RX6zfpLhEAUKN2cNA")
+					}></Ionicons>
+			</Pressable>
+
+			{/* <Text style={{ color: "blue" }}>Open in Maps</Text> */}
+
+			<Text
+				style={{
+					fontFamily: "Montserrat_400Black",
+					fontSize: 20,
+					color: "#03063A",
+					margin: "20px",
+					display: "flex",
+					justifyContent: "center",
+				}}>
+				{title.desc}
+			</Text>
 		</Text>
 	</View>
 );
@@ -36,38 +69,32 @@ const Institutes = () => {
 		{
 			id: "0MdJBpllCkokMFoN1OPp",
 			species: "Cat",
-			desc: "Cute orange kitty",
-			name: "Roger",
+			desc: "Shop No 10, ADCB Rehman Manzil, 75, Veer Nariman Road, Churchgate, Mumbai, Maharashtra 400020",
+			name: "Abby's Magic Pet store",
 		},
 		{
 			id: "0SUM2P3PE1UA7tzEN4Fc",
 			species: "Dog",
-			desc: "a cute dog",
-			name: "Pet",
+			desc: "shop no.6, Zohra Manzil, 213, next to Hayat medical, next to hayat medical, Dongri, mum-9, Mumbai, Maharashtra 400009",
+			name: "Cat King Pet shop",
 		},
 		{
 			id: "7xCAh2pc5qGNvfEAljSb",
-			desc: "Happy Rabbit",
+			desc: "XRMG+PQ9, Adarsh Nagar, Lower Parel, Mumbai, Maharashtra 400013",
 			species: "Rabbit",
-			name: "Biryani",
+			name: "The Welfare Of Stray Dogs",
 		},
 		{
 			id: "qnkvjrpH2qYv8YzJqJqd",
-			name: "Thomas",
-			desc: "Thomas is a mischievous but cute cat ",
+			name: "Animals Matter To Me (AMTM)",
+			desc: "Bungalow 13, 14, 15 Chikoowadi Lane, Marve Rd, Malad, Malad West, Mumbai, Maharashtra 400095",
 			species: "Cat",
 		},
 		{
 			id: "rPqTQZM9HLNK3425hwQ9",
-			desc: "Thomas is a mischievous but cute cat ",
-			name: "Thomas",
+			desc: "Siddhi Karavale, Maharashtra 410208",
+			name: "Apna Home Animal Shelter",
 			species: "Cat",
-		},
-		{
-			id: "zVvLA6yvAH0Orp0rv7WB",
-			species: "Dog",
-			name: "Sheru",
-			desc: "Sheru is a very shy dog,loves his treats",
 		},
 	];
 	// const renderStrays = () => {
@@ -142,6 +169,11 @@ const styles = StyleSheet.create({
 		display: "flex",
 		alignItems: "center",
 	},
+	compassIcon: {
+		fontSize: "32px",
+		margin: "auto",
+	},
+	button: {},
 });
 
 export default Institutes;
