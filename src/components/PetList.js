@@ -34,8 +34,6 @@ const PetList = () => {
 		<SafeAreaView style={styles.container}>
 			<div>
 				<Rupaw />
-			</div>
-			<div>
 				<CatBanner />
 			</div>
 			<Text

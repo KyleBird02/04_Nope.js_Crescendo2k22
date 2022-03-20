@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Login from "./src/components/Login";
 import SignUp from "./src/components/SignUp";
 import PetList from "./src/components/PetList";
+import PetInfo from "./src/components/PetInfo";
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +25,7 @@ export default function App() {
 				<Stack.Screen name="PetList" component={PetList} />
 				<Stack.Screen name="Login" component={Login} />
 				<Stack.Screen name="SignUp" component={SignUp} />
+				<Stack.Screen name="PetInfo" component={PetInfo} />
 			</Stack.Navigator>
 			<StatusBar style="auto" />
 		</NavigationContainer>
