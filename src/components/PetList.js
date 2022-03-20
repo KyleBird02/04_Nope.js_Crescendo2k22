@@ -1,6 +1,5 @@
 import React , {useEffect, useState} from "react";
 import {
-	SafeAreaView,
 	View,
 	FlatList,
 	StyleSheet,
@@ -8,22 +7,70 @@ import {
 	StatusBar,
 	Image,
 	Pressable,
+	ScrollView,
+	Modal,
 } from "react-native";
 import CatBanner from "./CatBanner";
 import Rupaw from "./Rupaw";
 import {strayRef} from "../../firebase";
 import { Montserrat_400Regular } from "@expo-google-fonts/montserrat";
-
-const Item = ({ title }) => (
-	<View style={styles.item}>
-		<Text style={styles.title}>{title.name}</Text>
-		<Image source={{uri : title.image}} style={{width:"40vw",height:"40vw",opacity:0.85}}/>
-	</View>
-);
+import PetInfo from "./PetInfo";
 
 const PetList = () => {
+	const [modalVisible, setModalVisible] = useState(false);
+
 	const [refresh,setRefresh] = useState(true);
 	const [species,setSpecies] = useState("Cat");
+
+	
+	// function PetListings() {
+	//   return (
+	// 	<>
+	// 	{mainList.map((title)=>{
+	// 		return (<View style={styles.item}>
+	// 		<Modal
+	// 		animationType="slide"
+	// 		transparent={true}
+	// 		visible={modalVisible}
+	// 		onRequestClose={() => {
+	// 		  setModalVisible(!modalVisible);
+	// 		}}
+	// 		  >
+	// 		  <Pressable onPress={()=>setModalVisible(!modalVisible)}>
+	// 		  <PetInfo pet={title}/>
+	// 		  </Pressable>
+	// 		</Modal>
+	// 		<Pressable onPress={()=>setModalVisible(!modalVisible)}>
+	// 		<Text style={styles.title}>{title.name}</Text>
+	// 		<Image source={{uri : title.image}} style={{width:"40vw",height:"40vw",opacity:0.85}}/>
+	// 		</Pressable>
+	// 	</View>)
+	// 	})}
+	// 	</>
+	//   )
+	// }
+	
+
+	const Item = ({ title }) => (
+		<View style={styles.item}>
+			<Modal
+			animationType="slide"
+			transparent={true}
+			visible={modalVisible}
+			onRequestClose={() => {
+			  setModalVisible(!modalVisible);
+			}}
+			  >
+			  <Pressable onPress={()=>setModalVisible(!modalVisible)}>
+			  <PetInfo pet={title}/>
+			  </Pressable>
+			</Modal>
+			<Pressable onPress={()=>setModalVisible(!modalVisible)}>
+			<Text style={styles.title}>{title.name}</Text>
+			<Image source={{uri : title.image}} style={{width:"40vw",height:"40vw",opacity:0.85}}/>
+			</Pressable>
+		</View>
+	);
 
 	const renderItem = ({ item }) => <Item title={item} />;
 
@@ -53,13 +100,11 @@ const PetList = () => {
 	useEffect(() => {
 		renderStrays()
 	
-	  return () => {
-		//
-	  }
+	  return () => unsubscribe;
 	}, [])
 
 	return (
-		<SafeAreaView style={styles.container}>
+		<ScrollView style={styles.container}>
 			<div>
 				<Rupaw />
 				<CatBanner />
@@ -96,7 +141,7 @@ const PetList = () => {
 				numColumns = {2}
 			/>
 			</View>
-		</SafeAreaView>
+		</ScrollView>
 	);
 };
 
@@ -117,7 +162,6 @@ const styles = StyleSheet.create({
 		fontWeight: "700",
 	},
 	flex:{
-		display:"flex",
 		alignItems:"center",
 	},
 	flexCol:{

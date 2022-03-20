@@ -1,29 +1,13 @@
-import { Montserrat_400Regular } from "@expo-google-fonts/montserrat";
 import React from "react";
 import {
 	SafeAreaView,
 	View,
-	FlatList,
 	StyleSheet,
 	Text,
 	StatusBar,
-	Image,
-	LabelScroller,
 } from "react-native";
 import { ImageBackground } from "react-native-web";
-import CatBanner from "./CatBanner";
 import Rupaw from "./Rupaw";
-
-const DATA = [
-	{
-		id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-		title: "First Item",
-	},
-	{
-		id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-		title: "Second Item",
-	},
-];
 
 const Item = ({ title }) => (
 	<View style={styles.item}>
@@ -31,9 +15,7 @@ const Item = ({ title }) => (
 	</View>
 );
 
-const PetInfo = () => {
-	const renderItem = ({ item }) => <Item title={item.title} />;
-
+const PetInfo = ({pet}) => {
 	return (
 		<SafeAreaView style={styles.container}>
 			<Rupaw />
@@ -44,7 +26,7 @@ const PetInfo = () => {
 					height: 350,
 					resizeMode: "contain",
 				}}
-				source={require("../assets/catImage.jpg")}></ImageBackground>
+				source={{uri : pet.image}}></ImageBackground>
 			<Text
 				style={{
 					fontFamily: "Montserrat_600Black",
@@ -53,7 +35,7 @@ const PetInfo = () => {
 					margin: "5px",
 					marginLeft: "20px",
 				}}>
-				Thomas
+				{pet.name}
 			</Text>
 			<View
 				style={{
@@ -70,8 +52,7 @@ const PetInfo = () => {
 						display: "flex",
 						justifyContent: "center",
 					}}>
-					Thomas has always been a mischeavous cat but his cuteness
-					always comes handy when caught.
+					{pet.desc}
 				</Text>
 			</View>
 		</SafeAreaView>
