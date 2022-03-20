@@ -13,6 +13,7 @@ import GetStrayData from "./src/components/GetStrayData";
 import { useState, useEffect } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import UserScreen from "./src/components/UserScreen";
+import Redeem from "./src/components/Redeem";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -83,7 +84,7 @@ const TabNavigator = () => {
 			})}>
 			<Tab.Screen name="Home" component={PetList} />
 			<Tab.Screen name="Register" component={GetStrayData} />
-			<Tab.Screen name="Donate" component={GetStrayData} />
+			<Tab.Screen name="Donate" component={Redeem} />
 			<Tab.Screen name="Account" component={UserScreen} />
 		</Tab.Navigator>
 	);

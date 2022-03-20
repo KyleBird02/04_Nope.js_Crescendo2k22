@@ -4,7 +4,9 @@ import firebase from 'firebase';
 import { Montserrat_500Medium, Montserrat_900Black } from '@expo-google-fonts/montserrat';
 import Rupaw from './Rupaw';
 
+
 export default function UserScreen() {
+
     const user = firebase.auth().currentUser;
 
   return (
