@@ -1,3 +1,4 @@
+import { Montserrat_400Regular, Montserrat_600SemiBold } from "@expo-google-fonts/montserrat";
 import React from "react";
 import {
   SafeAreaView,
@@ -15,6 +16,7 @@ const Item = ({ title }) => (
     <Text style={styles.title}>{title}</Text>
   </View>
 );
+
 
 const PetInfo = ({ pet }) => {
   return (

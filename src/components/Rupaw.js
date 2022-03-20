@@ -1,7 +1,25 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Pressable, Image, Text } from "react-native";
+import { db } from "../../firebase";
+import firebase from "firebase";
 
 export default function Rupaw() {
+	const user = firebase.auth().currentUser;
+	const [rp, setRp] = useState(0);
+
+	useEffect(() => {
+		db.collection("users").doc(user.uid)
+    .onSnapshot((doc) => {
+        console.log("Current data: ", doc.data());
+		setRp(doc.data().rupaws);
+    });
+	
+	  return () => {
+		
+	  }
+	}, [])
+	
+
 	return (
 		<Pressable>
 			<div
@@ -22,7 +40,7 @@ export default function Rupaw() {
 						color: "#03063A",
 						margin: "auto",
 					}}>
-					200
+					{rp}
 				</Text>
 				<Image
 					style={{ margin: "5px", width: "32px", height: "32px" }}

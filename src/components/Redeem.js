@@ -62,7 +62,7 @@ const PetList = () => {
             borderRadius: "10px",
           }}
         >
-          <Text style={styles.couponDiv}>Code: FLAT20</Text>
+          <Text style={styles.couponDiv}>200 Rupaws</Text>
         </div>
       </div>
       <div
@@ -90,7 +90,7 @@ const PetList = () => {
             borderRadius: "10px",
           }}
         >
-          <Text style={styles.couponDiv}>Code: GET300</Text>
+          <Text style={styles.couponDiv}>500 Rupaws</Text>
         </div>
       </div>
     </SafeAreaView>
@@ -140,8 +140,7 @@ const styles = StyleSheet.create({
     fontFamily: "Montserrat",
     fontWeight: "500",
     fontSize: "28px",
-    paddingLeft: "10px",
-    paddingTop: "20px",
+    padding: "10px",
   },
 });
 
