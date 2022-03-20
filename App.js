@@ -7,6 +7,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Login from "./src/components/Login";
 import SignUp from "./src/components/SignUp";
+import Institutes from "./src/components/Institutes";
 import { AuthProvider } from "./src/components/Auth";
 import { auth } from "./firebase";
 import GetStrayData from "./src/components/GetStrayData";
@@ -63,7 +64,7 @@ const TabNavigator = () => {
 
 					if (route.name === "Home") {
 						iconName = "home-outline";
-					} else if (route.name === "Donate") {
+					} else if (route.name === "Institutes") {
 						iconName = "cash-outline";
 					} else if (route.name === "Register") {
 						iconName = "umbrella-outline";
@@ -80,7 +81,7 @@ const TabNavigator = () => {
 			})}>
 			<Tab.Screen name="Home" component={PetList} />
 			<Tab.Screen name="Register" component={GetStrayData} />
-			<Tab.Screen name="Donate" component={GetStrayData} />
+			<Tab.Screen name="Institutes" component={Institutes} />
 		</Tab.Navigator>
 	);
 };
