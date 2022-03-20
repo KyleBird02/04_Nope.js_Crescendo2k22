@@ -3,7 +3,7 @@ import { Pressable, Image } from "react-native";
 
 export default function CatBanner() {
 	return (
-		<Pressable>
+		<a href="https://www.humanesociety.org/resources/how-help-stray-pet">
 			<Image
 				style={{
 					width: "90vw",
@@ -12,6 +12,6 @@ export default function CatBanner() {
 					borderRadius: "32px",
 				}}
 				source={require("../assets/StrayBanner.png")}></Image>
-		</Pressable>
+		</a>
 	);
 }
