@@ -1,6 +1,6 @@
 import PetList from "./src/components/PetList";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet} from "react-native";
 import { useFonts, Montserrat_900Black } from "@expo-google-fonts/montserrat";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -12,6 +12,7 @@ import { auth } from "./firebase";
 import GetStrayData from "./src/components/GetStrayData";
 import { useState, useEffect } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import UserScreen from "./src/components/UserScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -67,6 +68,8 @@ const TabNavigator = () => {
 						iconName = "cash-outline";
 					} else if (route.name === "Register") {
 						iconName = "umbrella-outline";
+					}else if (route.name === "Account") {
+						iconName = "person-outline";
 					}
 
 					// You can return any component that you like here!
@@ -81,6 +84,7 @@ const TabNavigator = () => {
 			<Tab.Screen name="Home" component={PetList} />
 			<Tab.Screen name="Register" component={GetStrayData} />
 			<Tab.Screen name="Donate" component={GetStrayData} />
+			<Tab.Screen name="Account" component={UserScreen} />
 		</Tab.Navigator>
 	);
 };

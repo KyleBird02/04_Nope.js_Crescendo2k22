@@ -1,3 +1,4 @@
+import { Montserrat_400Regular, Montserrat_600SemiBold } from "@expo-google-fonts/montserrat";
 import React from "react";
 import {
 	SafeAreaView,
@@ -29,7 +30,7 @@ const PetInfo = ({pet}) => {
 				source={{uri : pet.image}}></ImageBackground>
 			<Text
 				style={{
-					fontFamily: "Montserrat_600Black",
+					fontFamily: Montserrat_600SemiBold,
 					fontSize: 30,
 					color: "#03063A",
 					margin: "5px",
@@ -45,7 +46,7 @@ const PetInfo = ({pet}) => {
 				}}>
 				<Text
 					style={{
-						fontFamily: "Montserrat_400Black",
+						fontFamily: Montserrat_400Regular,
 						fontSize: 20,
 						color: "#03063A",
 						margin: "20px",
