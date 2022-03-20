@@ -7,10 +7,11 @@ import {
 	Text,
 	StatusBar,
 	Image,
+	Pressable,
 } from "react-native";
 import CatBanner from "./CatBanner";
 import Rupaw from "./Rupaw";
-import {strayRef } from "../../firebase";
+import {strayRef} from "../../firebase";
 import { Montserrat_400Regular } from "@expo-google-fonts/montserrat";
 
 const Item = ({ title }) => (
@@ -22,6 +23,7 @@ const Item = ({ title }) => (
 
 const PetList = () => {
 	const [refresh,setRefresh] = useState(true);
+	const [species,setSpecies] = useState("Cat");
 
 	const renderItem = ({ item }) => <Item title={item} />;
 
@@ -38,6 +40,14 @@ const PetList = () => {
 		  });
 		  setRefresh(!refresh);
 	  });
+	}
+
+	const renderFilteredStrays = (species) =>{
+		// console.log(items);
+		// items = mainList;
+		// setMain(items);
+		// const filtered = mainList.filter(val=>val.species === species);
+		// setMain(filtered);
 	}
 
 	useEffect(() => {
@@ -61,10 +71,24 @@ const PetList = () => {
 					fontFamily: "Montserrat_900Black",
 					fontSize: 40,
 					color: "#03063A",
-					margin: "16px",
+					margin: "5px",
 				}}>
 				Adopt Pet
 			</Text>
+			<View style={styles.flexCol}>
+				<Pressable onPress={()=>{renderFilteredStrays("Cat")}}>
+				<Text style={styles.filterbtn}>Cats</Text>
+				</Pressable>
+				<Pressable onPress={()=>{renderFilteredStrays("Dog")}}>
+				<Text style={styles.filterbtn}>Dogs</Text>
+				</Pressable>
+				<Pressable onPress={()=>{renderFilteredStrays("Bird")}}>
+				<Text style={styles.filterbtn}>Rabbits</Text>	
+				</Pressable>
+				<Pressable onPress={()=>{renderFilteredStrays("Rabbit")}}>
+				<Text style={styles.filterbtn}>Birds</Text>	
+				</Pressable>
+			</View>
 			<View style={styles.flex}>
 			<FlatList
 				data={mainList}
@@ -80,13 +104,13 @@ const PetList = () => {
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
 		marginTop: StatusBar.currentHeight || 0,
 	},
 	item: {
 		backgroundColor: "#C2EBFF",
 		marginHorizontal:"10px",
 		borderRadius : "10px",
+		marginBottom : "5px",
 	},
 	title: {
 		fontSize: 18,
@@ -97,7 +121,21 @@ const styles = StyleSheet.create({
 	flex:{
 		display:"flex",
 		alignItems:"center",
-	}
+	},
+	flexCol:{
+		display:"flex",
+		flexDirection :"row",
+		justifyContent : "space-evenly", 
+	},
+	filterbtn : {
+		color : "white",
+		padding : "10px",
+		backgroundColor : "#3394EB",
+		marginHorizontal : "5px",
+		borderRadius : "10px",
+		marginBottom : "15px",
+		fontSize : 16,
+	},
 });
 
 export default PetList;
