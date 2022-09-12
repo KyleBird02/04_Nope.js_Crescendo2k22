@@ -1,6 +1,6 @@
 # PetSmart 😺
 ### An app to help stray animals find new homes
-This was our submission for the 2k22 Crescendo Hackathon
+This was our submission for the 2k22 Crescendo Hackathon where we acheived 3rd position.
 
 ## Team members
 - @chinmaykadam
