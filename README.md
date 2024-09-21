@@ -8,6 +8,9 @@ PetSmart also offers users the ability to add stray animals in their locality to
 Rupaws is a centralised in-app currency which are earned bu users after making donations. These Rupaws can then be traded in for exclusive discounts from partnered stores which can benifit pet owners. This also creates an incentive for users to donate and further help out the institutions hosted on the app.
 ![Rupaws](https://github.com/KyleBird02/04_Nope.js_Crescendo2k22/blob/master/images/Rupaw.png)
 
+## Presentation Link
+(https://www.canva.com/design/DAE7bNIehjs/6idTjSELHGHyA4zqBgV2Ow/view?utm_content=DAE7bNIehjs&utm_campaign=designshare&utm_medium=link&utm_source=editor)
+
 ## Team members
-- @chinmaykadam
-- @KyleBird02
+- Afif Deshmukh
+- Chinmay Kadam
